@@ -21,11 +21,19 @@ RSpec.describe User, type: :model do
   	  @user.password_confirmation = '000000'
       expect(@user).to be_valid
     end
-    
+
     it 'nicknameが空では登録できない' do
+      @user.nickname = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
+
     it 'emailが空では登録できない' do
+      @user.email = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email can't be blank")
     end
+    
     it 'passwordが空では登録できない' do
     end
     it 'passwordが存在してもpassword_confirmationが空では登録できない' do
