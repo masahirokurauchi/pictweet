@@ -45,11 +45,16 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-    
+
     it 'nicknameが7文字以上では登録できない' do
+      @user.nickname = Faker::Name.initials(number: 7)
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 6 characters)")
     end
+
     it '重複したemailが存在する場合登録できない' do
     end
+
     it 'passwordが5文字以下では登録できない' do
     end
   end
