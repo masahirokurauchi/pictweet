@@ -29,6 +29,8 @@ describe TweetsController, type: :request do
 
   describe 'GET #show' do
     it 'showアクションにリクエストすると正常にレスポンスが返ってくる' do 
+      get tweet_path(@tweet)
+      expect(response.status).to eq 200
     end
 
     it 'showアクションにリクエストするとレスポンスに投稿済みのツイートのテキストが存在する' do 
@@ -36,7 +38,7 @@ describe TweetsController, type: :request do
 
     it 'showアクションにリクエストするとレスポンスに投稿済みのツイートの画像URLが存在する' do 
     end
-    
+
     it 'showアクションにリクエストするとレスポンスにコメント一覧表示部分が存在する' do 
     end
   end
