@@ -18,6 +18,9 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'Password', with: @user.password
       fill_in 'Password confirmation', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
