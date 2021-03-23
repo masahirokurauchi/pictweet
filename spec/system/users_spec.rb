@@ -22,6 +22,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
         find('input[name="commit"]').click
       }.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
+      expect(current_path).to eq(root_path)
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
     end
