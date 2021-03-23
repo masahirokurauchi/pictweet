@@ -24,6 +24,9 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
+      expect(
+        find('.user_nav').find('span').hover
+      ).to have_content('ログアウト')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
     end
   end
