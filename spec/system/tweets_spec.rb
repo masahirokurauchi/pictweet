@@ -168,7 +168,15 @@ RSpec.describe 'ツイート削除', type: :system do
     end
     it 'ログインしていないとツイートの削除ボタンがない' do
       # トップページに移動する
+      visit root_path
       # ツイート1に「削除」ボタンが無いことを確認する
+      expect(
+        all('.more')[1].hover
+      ).to have_no_link '削除', href: tweet_path(@tweet1)
+      # ツイート2に「削除」ボタンが無いことを確認する
+      expect(
+        all(".more")[0].hover
+      ).to have_no_link '削除', href: tweet_path(@tweet2)
       # ツイート2に「削除」ボタンが無いことを確認する
     end
   end
