@@ -28,6 +28,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
         find('.user_nav').find('span').hover
       ).to have_content('ログアウト')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
     end
   end
   context 'ユーザー新規登録ができないとき' do
